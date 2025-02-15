@@ -6,35 +6,37 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-
+        String str = br.readLine();
+        StringTokenizer st = new StringTokenizer(str," ");
         int n = Integer.parseInt(st.nextToken());
-        long newScore = Long.parseLong(st.nextToken());
+        int newScore = Integer.parseInt(st.nextToken());
         int p = Integer.parseInt(st.nextToken());
 
-        if (n == 0) { 
+        int[] score = new int[n];
+        
+        if(n == 0){
             System.out.println("1");
-        } else {
-            long[] scores = new long[n];
-            st = new StringTokenizer(br.readLine(), " ");
+        }
+        else {
+            str = br.readLine();
+            st = new StringTokenizer(str," ");
+
             for (int i = 0; i < n; i++) {
-                scores[i] = Long.parseLong(st.nextToken());
+                score[i] = Integer.parseInt(st.nextToken());
             }
 
-            // 리스트 크기가 `p`개를 꽉 채운 상태에서 마지막 점수보다 작거나 같으면 `-1` 출력
-            if (n == p && scores[n - 1] >= newScore) {
+            if (n == p && score[p - 1] >= newScore) {
                 System.out.println("-1");
             } else {
-                // 새로운 점수의 랭킹 계산
-                int rank = 1;
+                int grade = 1;
                 for (int i = 0; i < n; i++) {
-                    if (scores[i] > newScore) {
-                        rank++;
+                    if (score[i] > newScore) {
+                        grade++;
                     } else {
                         break;
                     }
                 }
-                System.out.println(rank);
+                System.out.println(grade);
             }
         }
     }
