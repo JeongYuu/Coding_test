@@ -27,8 +27,8 @@ public class Main {
             city[i] = Integer.parseInt(st.nextToken());
         }
 
-        int min = city[0];
-        int answer = 0;
+        long min = city[0];
+        long answer = 0;
 
         for(int i=0;i<N-1;i++){
             if(min>city[i]) min = city[i];
